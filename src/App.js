@@ -1,24 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import Header from './components/layout/Header';
+import { Provider } from 'mobx-react';
+import memeStore from './stores/memeStore';
+import Memes from './components/Memes/Memes';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Provider memeStore={memeStore} >
+        <Header />
+        <div className='container'>
+          <Memes />
+        </div>
+      </Provider>
     </div>
   );
 }
